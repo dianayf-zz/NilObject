@@ -12,11 +12,11 @@ end
 
 class User
   def initialize(params)
-    @birthday = params[:birthday]
+    @birthday = params[:birthday] || NilBirthday.new
   end
   
   def birthday
-    @birthday || NilBirthday.new
+    @birthday
   end
 
 end
