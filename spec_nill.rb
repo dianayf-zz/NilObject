@@ -4,15 +4,17 @@ class Birthday
   end
 end
 
-class NilBirthday
-  def greating
-    "nil message"
+class NilObject
+  def initialize(method_name, response)
+    self.class.send :define_method, method_name do 
+      response
+    end
   end
 end
 
 class User
   def initialize(params)
-    @birthday = params[:birthday] || NilBirthday.new
+    @birthday = params[:birthday] || NilObject.new(:greating, "nil message")
   end
   
   def birthday
