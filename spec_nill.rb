@@ -6,13 +6,37 @@ end
 
 class Engine
   def start
-    "engine started"  
+    "engine started"
   end
 end
 
 class NumberThing
   def primes
-    [3, 5, 7] 
+    [3, 5, 7]
+  end
+end
+
+class Car
+  attr_accessor :engine
+
+  def initialize(params)
+    @engine = params[:engine] || NilObject.new(:start, "whell, sorry but there is no car")
+  end
+end
+
+class Prime
+  attr_accessor :number_thing
+
+  def initialize(params)
+    @number_thing = params[:number_thing] || NilObject.new(:primes, [])
+  end
+end
+
+class User
+  attr_accessor :birthday
+
+  def initialize(params)
+    @birthday = params[:birthday] || NilObject.new(:greating, "nil message")
   end
 end
 
@@ -22,37 +46,6 @@ class NilObject
       response
     end
   end
-end
-
-class Car
-  def initialize(params)
-    @engine = params[:engine] || NilObject.new(:start, "whell, sorry but there is no car")
-  end
-
-  def engine
-    @engine
-  end
-end
-
-class Prime
-  def initialize(params)
-    @number_thing = params[:number_thing] || NilObject.new(:primes,[] ) 
-  end
- 
-  def number_thing
-    @number_thing
-  end
-end
-
-class User
-  def initialize(params)
-    @birthday = params[:birthday] || NilObject.new(:greating, "nil message")
-  end
-  
-  def birthday
-    @birthday
-  end
-
 end
 
 describe "greating when user birthday " do
